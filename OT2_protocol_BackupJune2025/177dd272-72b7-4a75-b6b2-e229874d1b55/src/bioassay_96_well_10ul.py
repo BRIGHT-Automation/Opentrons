@@ -1,0 +1,83 @@
+'''
+Temporary protocol for opentron bioassays using the NEST 96-well plates for the library
+
+Functions:
+    get_labware(protocol)
+    get_destinations(plates: List, counter: int) -> List
+    run(protocol)
+'''
+
+from opentrons import protocol_api
+from typing import List
+
+#user defines volume and number of libarary samples
+VOLUME_TO_ASSAY = 10
+NUMBER_OF_LIBRARY_SAMPLES = 36 #add check that it isn't bigger than the library plates!
+
+#metadata needs to be defined outside of a function
+metadata = {
+    'protocolName': 'Bioassay_10ul',
+    'author': 'Thom Booth <thoboo@biosustain.dtu.dk>',
+    'description': 'Protocol for pairwise bioassays.',
+    'apiLevel': '2.12'
+}
+
+def get_labware(protocol):
+    '''
+    returns labware specific to this protocol
+        arguments:
+            protocol: the protocol as defined by the run function
+        returns:
+            library_plates: a list of labware objects reprisenting the library plates
+            test_plates: a list of a labware objects reprisenting the test (i.e. target) plates
+            tip_racks: a list of labware objects for the tip racks
+            pipette: instrument object for the pippette
+    '''
+    library_plate_1 = protocol.load_labware('nest_96_wellplate_2ml_deep', 1)
+    library_plates = [library_plate_1]
+    test_plate_1 = protocol.load_labware('corning_96_wellplate_360ul_flat', 4)
+    test_plates =[test_plate_1]
+    tip_rack_1 = protocol.load_labware('opentrons_96_tiprack_300ul', 7)
+    tip_rack_2 = protocol.load_labware('opentrons_96_tiprack_300ul', 8)
+    tip_racks = [tip_rack_1, tip_rack_2]
+    pipette = protocol.load_instrument(
+        instrument_name='p300_single',
+        mount='right',
+        tip_racks=tip_racks
+        )
+    return library_plates, test_plates, tip_racks, pipette
+
+def get_destinations(plates: List, counter: int) -> List:
+    '''
+    gets wells of a specific index from multiple test plates
+        arguments:
+            plates: a list of plate objects
+            counter: the index to get from all plates 
+                (e.g. 0 will return the first well of all plates in the list)
+        returns:
+            destinations: a list of wells
+    '''
+    destinations = []
+    for plate in plates:
+        destinations.append(plate.wells()[counter])
+    return destinations
+
+def run(protocol):
+    '''
+    run is called by the opentron and defines the labware and each step
+        arguments:
+            protocol: this argument is required by the opentron and is used to specify the run
+        returns:
+            None
+    '''
+    library_plates, test_plates, tip_racks, pipette = get_labware(protocol)
+    library_wells = [well for library_plate in library_plates for well in library_plate.wells()]
+    #we use a counter as we only need to use test wells for as long as we have library wells
+    well_counter = 0
+    while well_counter < NUMBER_OF_LIBRARY_SAMPLES:
+    	#distribute method takes a list of wells
+    	destinations = get_destinations(test_plates, well_counter)
+    	#we want to pippette into the top of the sample plate
+    	destinations_top =[destination.top() for destination in destinations]
+    	pipette.distribute(volume=VOLUME_TO_ASSAY, source=library_wells[well_counter], dest=destinations_top) 
+    	well_counter +=1
