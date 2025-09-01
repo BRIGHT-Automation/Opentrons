@@ -1,5 +1,5 @@
 metadata = {
-    'protocolName': 'CLC Bi Parental 8 well',
+    'protocolName': 'CLC Conjugation 8-well plate flooding_0-48_48wells',
     'fileName': 'CLC_8well_plate_flooding.py',
     'author': 'Rikke <riras@dtu.dk> - modified Lachlan',
     'source': 'DTU Biosustain',
@@ -12,7 +12,7 @@ from opentrons import types
 
 def run(protocol):
 
-    well_count = 12
+    well_count = 48
     plating_volume = 250
 
     #Load Tips
