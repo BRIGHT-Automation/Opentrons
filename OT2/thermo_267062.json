@@ -1,0 +1,155 @@
+{
+  "ordering": [
+    [
+      "A1",
+      "B1"
+    ],
+    [
+      "A2",
+      "B2"
+    ],
+    [
+      "A3",
+      "B3"
+    ],
+    [
+      "A4",
+      "B4"
+    ]
+  ],
+  "brand": {
+    "brand": "Thermo Scientific",
+    "brandId": [
+      "267062",
+      "167064",
+      "PSS 167064"
+    ]
+  },
+  "metadata": {
+    "displayName": "Nunc Rectangular Dishes 8-well, non-treated, with lid, sterile",
+    "displayCategory": "wellPlate",
+    "displayVolumeUnits": "µL",
+    "tags": [
+      "8-well plates with lid (for agar)"
+    ]
+  },
+  "dimensions": {
+    "xDimension": 127.8,
+    "yDimension": 85.5,
+    "zDimension": 14.5
+  },
+  "wells": {
+    "A1": {
+      "depth": 11.6,
+      "totalLiquidVolume": 11000,
+      "shape": "rectangular",
+      "x": 19.05,
+      "y": 62.55,
+      "z": 2.9,
+      "xDimension": 27.9,
+      "yDimension": 37.6
+    },
+    "B1": {
+      "depth": 11.6,
+      "totalLiquidVolume": 11000,
+      "shape": "rectangular",
+      "x": 19.05,
+      "y": 22.95,
+      "z": 2.9,
+      "xDimension": 27.9,
+      "yDimension": 37.6
+    },
+    "A2": {
+      "depth": 11.6,
+      "totalLiquidVolume": 11000,
+      "shape": "rectangular",
+      "x": 48.95,
+      "y": 62.55,
+      "z": 2.9,
+      "xDimension": 27.9,
+      "yDimension": 37.6
+    },
+    "B2": {
+      "depth": 11.6,
+      "totalLiquidVolume": 11000,
+      "shape": "rectangular",
+      "x": 48.95,
+      "y": 22.95,
+      "z": 2.9,
+      "xDimension": 27.9,
+      "yDimension": 37.6
+    },
+    "A3": {
+      "depth": 11.6,
+      "totalLiquidVolume": 11000,
+      "shape": "rectangular",
+      "x": 78.85,
+      "y": 62.55,
+      "z": 2.9,
+      "xDimension": 27.9,
+      "yDimension": 37.6
+    },
+    "B3": {
+      "depth": 11.6,
+      "totalLiquidVolume": 11000,
+      "shape": "rectangular",
+      "x": 78.85,
+      "y": 22.95,
+      "z": 2.9,
+      "xDimension": 27.9,
+      "yDimension": 37.6
+    },
+    "A4": {
+      "depth": 11.6,
+      "totalLiquidVolume": 11000,
+      "shape": "rectangular",
+      "x": 108.75,
+      "y": 62.55,
+      "z": 2.9,
+      "xDimension": 27.9,
+      "yDimension": 37.6
+    },
+    "B4": {
+      "depth": 11.6,
+      "totalLiquidVolume": 11000,
+      "shape": "rectangular",
+      "x": 108.75,
+      "y": 22.95,
+      "z": 2.9,
+      "xDimension": 27.9,
+      "yDimension": 37.6
+    }
+  },
+  "groups": [
+    {
+      "metadata": {
+        "wellBottomShape": "flat"
+      },
+      "wells": [
+        "A1",
+        "B1",
+        "A2",
+        "B2",
+        "A3",
+        "B3",
+        "A4",
+        "B4"
+      ]
+    }
+  ],
+  "parameters": {
+    "format": "irregular",
+    "quirks": [],
+    "isTiprack": false,
+    "isMagneticModuleCompatible": false,
+    "loadName": "thermo_267062"
+  },
+  "namespace": "bright",
+  "version": 1,
+  "schemaVersion": 2,
+  "cornerOffsetFromSlot": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  }
+}
